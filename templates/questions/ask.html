@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block container %}
+<div class="row">
+    <div class="col-8 offset-1 new-question">
+        <h4 class="card-title">New Question</h4>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <fieldset class="form-group">
+                <label for="InputTitle">Title</label>
+                <input type="text" class="form-control" name="title" placeholder="Enter title" required>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label for="Textarea">Text</label>
+                <textarea class="form-control" name="text" rows="5" placeholder="Enter text" required></textarea>
+            </fieldset>
+
+            <fieldset class="form-group">
+                <label for="InputTags">Title</label>
+                <input type="text" class="form-control" name="tags" placeholder="Enter tags" required>
+                <small class="text-muted">Enter tags separated by comma and space (", ")</small>
+            </fieldset>
+
+            <button type="submit" class="btn btn-success">ASK!</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

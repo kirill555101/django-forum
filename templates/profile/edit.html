@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block container %}
+<form action="" method="post" style="margin-top: 25px" enctype="multipart/form-data">
+    <h4>Settings: {{ user.username }}</h4>
+
+    {% csrf_token %}
+    <table class="table">
+        {{ form.as_table }}
+    </table>
+
+    {% if error %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <button class="btn btn-primary" type="submit">Edit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block container %}
+<div class="container question-panel">
+    <div class="row">
+        <div class="col-3">
+            <div class="row justify-content-center">
+                <div class="question-user">
+                    <img class="question-user-img" src='{{ question.author.avatar }}' />
+                </div>
+            </div>
+
+            <div class="row justify-content-center rating">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-danger">-</button>
+                    <button type="button" class="btn btn-outline-info disabled">{{ question.get_likes_count }}</button>
+                    <button type="button" class="btn btn-outline-success">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <h4 class="card-title">{{ question.title }}</h4>
+
+            <article class="text-sm-left card-text">
+                {{ question.text }}
+            </article>
+
+            <div class="d-inline tag">
+                Tags:
+                {% for tag in question.tags.all %}
+                <a class="tag" href="{% url 'main:tag' tag.id %}">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="container">
+        {% if answers %}
+        {% for answer in answers %}
+        <div class="row question-panel">
+            <div class="card col-12 ">
+                <div class="user-question col-2">
+                    <div class="row justify-content-center">
+                        <div class="user-img">
+                            <img src='{{ answer.author.avatar }}' />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center rating">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-outline-danger">-</button>
+                            <button type="button" class="btn btn-outline-info disabled">
+                                {{ answer.get_likes_count }}
+                            </button>
+                            <button type="button" class="btn btn-outline-success">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-container col-10 offset-2">
+                    <a href="#">
+                        <h5 class="card-title">{{ answer.title }}</h5>
+                    </a>
+                    <div class="row">
+                        <div class="card-text">
+                            {{ answer.text }}
+                        </div>
+                    </div>
+                    <form>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Check">
+                            <label class="form-check-label" for="Check1">Correct</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+        {% else %}
+        <h4 class="text-info">There are no answers</h4>
+        {% endif %}
+    </div>
+
+    {% include "questions/pagination/answers.html" %}
+    {% if user.is_authenticated %}
+    <form class="answer" method="post" action="{% url "main:answer" question.id %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <textarea class="form-control" rows="3" name="text" placeholder="Enter your answer" required>
+            </textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success btn-sm">Answer</button>
+    </form>
+    {% endif %}
+
+</div>
+{% endblock %}

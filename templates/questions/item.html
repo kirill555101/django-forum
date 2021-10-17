@@ -1,0 +1,51 @@
+{% load static %}
+
+<div class="row question-panel">
+    <div class="card col-12">
+        <div class="user-question col-2">
+            <div class="row justify-content-center">
+                <div class="user-img">
+                    <img src='{{ question.author.avatar }}' />
+                </div>
+            </div>
+            <div class="row justify-content-center rating">
+                <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-outline-danger">-</button>
+                    <button type="button" class="btn btn-outline-info disabled">{{ question.get_likes_count }}</button>
+                    <button type="button" class="btn btn-outline-success">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-container col-10 offset-2">
+            <a href="{% url 'main:question' question.id %}">
+                <h5 class="card-title">{{ question.title|truncatechars:50 }}</h5>
+            </a>
+
+            <div class="row">
+                <div class="card-text">
+                    <p>
+                        {{ question.text|truncatechars:120 }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="card-text">
+                        Answers ({{ question.get_answers_count }})
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="card-text">
+                        Tags:
+                        {% for tag in question.tags.all|slice:":4" %}
+                        <a class="tag" href="{% url 'main:tag' tag.id %}">{{ tag }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

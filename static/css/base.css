@@ -1,0 +1,157 @@
+body {
+    min-width: 800px;
+}
+
+.inset {
+    width: 45px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6),
+    0 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: transparent !important;
+    z-index: 999;
+}
+
+.inset img {
+    border-radius: inherit;
+    width: inherit;
+    height: inherit;
+    display: block;
+    position: relative;
+    z-index: 998;
+}
+
+.user-name {
+    margin-right: 10px;
+    align-items: center;
+}
+
+#user-name {
+    color: green;
+    font-style: inherit;
+}
+
+.navbar-brand-ask {
+    color: #373535;
+    font-size: 40px;
+    margin: 8px 0;
+}
+
+.user-img {
+    margin: 10px 0 10px 0;
+    width: 50px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.6),
+    0 1px 1px rgba(0, 0, 0, 0.1);
+    background-color: transparent !important;
+    z-index: 999;
+}
+
+.user-img img {
+    border-radius: inherit;
+    width: inherit;
+    height: inherit;
+    display: block;
+    position: relative;
+    z-index: 998;
+}
+
+.question-user-img {
+    width: 100px;
+}
+
+.question-user {
+    margin-bottom: 10px;
+}
+
+.questions {
+    margin: 5px 0 5px 0;
+    max-height: 35px;
+}
+
+.questions h4 {
+    margin-right: 15px;
+}
+
+.rating {
+    margin-bottom: 10px;
+}
+
+.question-container {
+    top: -100px;
+    padding: 0 50px 0 20px;
+    max-height: 40px;
+}
+
+.question-panel {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.answers {
+    margin-right: 10px;
+}
+
+.tag {
+    margin-right: 5px;
+}
+
+.top-tags {
+    margin-bottom: 10px;
+}
+
+.pagination {
+    margin: 10px;
+}
+
+.new-question {
+    margin-top: 20px;
+    margin-bottom: 120px;
+}
+
+.answer {
+    margin-bottom: 30px;
+}
+
+.settings {
+    margin: 30px 30px 100px 30px;
+}
+
+.form-login {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-login .form-login-heading,
+.form-login .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-login .checkbox {
+  font-weight: normal;
+}
+
+.form-login .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-login .form-control:focus {
+  z-index: 2;
+}
+
+.form-login input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

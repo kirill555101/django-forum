@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block container %}
+<div class="row questions">
+    <h4 class="navbar-text alert-link">Tag: {{ current_tag }}</h4>
+</div>
+<div class="row">
+    <div class="col-8">
+        {% if questions %}
+        {% for question in questions %}
+        {% include "questions/item.html" %}
+        {% endfor %}
+        {% else %}
+        <h4 class="text-info"> There are no questions </h4>
+        {% endif %}
+        {% include "questions/pagination/questions.html" %}
+    </div>
+
+    <div class="col-4">
+        <div class="top-tags col-10">
+            <h3 class="card-title">Popular tags</h3>
+            <ul class="list-group">
+                {% for tag in popular_tags %}
+                <li class="list-group-item">
+                    <a class="card-link" href="{% url 'main:tag' tag.id %}">{{ tag }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="top-users col-10">
+            <h3 class="card-title">Best members</h3>
+            <ul class="list-group">
+                {% for user in top_users %}
+                <li class="list-group-item">
+                    <a class="card-link" href="#">{{ user }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

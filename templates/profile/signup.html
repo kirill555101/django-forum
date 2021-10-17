@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block container %}
+<div class="container" style="height: 500px;">
+
+    <form action="" method="post" class="form-login" style="margin-top: 100px" enctype="multipart/form-data">
+        <h2 class="form-login-heading">Register</h2>
+
+        {% csrf_token %}
+        <table class="table">
+        {{ form.as_table }}
+        </table>
+
+        {% if error %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+    <div class="link-to-sign-up text-center" style="margin-bottom: 20px;">
+        Already have account?
+        <a class="card-link" href="{% url 'main:login' %}">Login</a>
+    </div>
+</div>
+{% endblock %}

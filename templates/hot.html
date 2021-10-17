@@ -1,0 +1,15 @@
+{% extends "questions/list.html" %}
+
+{% load static %}
+
+{% block tabs %}
+<div class="row questions">
+    <a href="{% url 'main:index' %}">
+        <h4 class="navbar-text card-link">New Questions</h4>
+    </a>
+
+    <a href="{% url 'main:hot' %}">
+        <h4 class="navbar-text alert-link">Hot Questions</h4>
+    </a>
+</div>
+{% endblock %}

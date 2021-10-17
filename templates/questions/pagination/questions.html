@@ -1,0 +1,19 @@
+<div class="pagination justify-content-center">
+    <span class="step-links">
+        {% if questions.has_previous %}
+        <a class="btn btn-sm btn-outline-info" href="?page={{ questions.previous_page_number }}">
+            <
+        </a>
+        {% endif %}
+
+        <span class="current">
+            <a class="btn btn-sm btn-outline-info disabled" href="#">{{ questions.number }}</a>
+        </span>
+
+        {% if questions.has_next %}
+        <a class="btn btn-sm btn-outline-info" href="?page={{ questions.next_page_number }}">
+            >
+        </a>
+        {% endif %}
+    </span>
+</div>
